@@ -18,5 +18,10 @@
   "homepage": "https://github.com/andrei1015/cypressio-reliability-test#readme",
   "devDependencies": {
     "cypress": "^9.2.0"
+  },
+  "dependencies": {
+    "browserslist": "^4.19.1",
+    "caniuse-lite": "^1.0.30001298",
+    "dotenv": "^10.0.0"
   }
 }
