@@ -25,20 +25,21 @@ async function testRuns() {
                 passes = passes + 1
             }
     
-            // fs.appendFile(
-            //     filePath, 
-            //     'run ' + i  + ' :' + lastLine + '\n', 
-            //     { flag: 'a' });
+            fs.appendFile(
+                filePath, 
+                'run ' + i  + ' :' + lastLine + '\n', 
+                { flag: 'a' }, 
+                function (err) {
+                    if (err) throw err;
+                });
             console.log(lastLine);
     }
     console.log('1')
     console.log(passes)
     console.log(fails)
     console.log('2')
-    //display()
 }
 
-// run()
 testRuns()
 
 // video moving code goes here
