@@ -8,6 +8,7 @@ touch $report_file
 
 for (( i=1; i<=5; i++ ))
 do
-npx cypress run | sed -n '2p'
+echo 'run: ' $i
+npx cypress run | tac | sed -n '2 p' >> $report_file
 echo "ran"
 done
