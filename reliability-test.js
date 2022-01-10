@@ -1,7 +1,8 @@
+process.env['BROWSERSLIST_IGNORE_OLD_DATA'] = true; // deal with spaghetti code and stuff
+
 const { exec } = require("child_process");
 const fs = require('fs');
 var dayjs = require('dayjs')
-process.env['BROWSERSLIST_IGNORE_OLD_DATA'] = true;
 
 let passes = 0
 let fails = 0
@@ -9,8 +10,6 @@ let lastLine
 
 let date = dayjs().format('YYYYMMDDHHHmmss')
 const filePath = 'reports/' + date + '.txt'
-
-const fd = fs.openSync(filePath, 'w')
 
 
 function testRuns() {
