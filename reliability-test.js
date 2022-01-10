@@ -2,17 +2,20 @@ process.env['BROWSERSLIST_IGNORE_OLD_DATA'] = true; // deal with spaghetti code 
 
 const { exec } = require("child_process");
 const fs = require('fs');
-var dayjs = require('dayjs')
+var dayjs = require('dayjs');
+const { callbackify } = require("util");
 
-let passes = 0
-let fails = 0
+let passes
+let fails
 let lastLine
+passes = 0
+fails = 0
 
 let date = dayjs().format('YYYYMMDDHHHmmss')
 const filePath = 'reports/' + date + '.txt'
 
 
-function testRuns() {
+async function testRuns(callback) {
     for (let i = 0; i < 2; i++) {
         exec("npx cypress run", (error, stdout, stderr) => {
             let splitLines = stdout.split(/\r?\n/);
@@ -31,7 +34,7 @@ function testRuns() {
             console.log(lastLine);
         })
     }
-    display()
+    return [passes, fails]
 }
 
 function totalsSum() {
@@ -43,12 +46,18 @@ function totalsSum() {
     }
 }
 
-function display() {
+function display(fails, passes) {
+    console.log('1')
     console.log(passes)
     console.log(fails)
+    console.log('2')
 }
 
-testRuns()
+async function run() {
+    testRuns();
+    await display(fails, passes);
+}
 
+run()
 
 // video moving code goes here
