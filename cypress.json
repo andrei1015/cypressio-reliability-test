@@ -1,5 +1,4 @@
 { "env": {
     "BROWSERSLIST_IGNORE_OLD_DATA": true
-  },
-  "video": false
+  }
 }
