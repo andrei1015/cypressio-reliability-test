@@ -19,9 +19,9 @@ do
     
     if [[ "$last_line" == *"passed"* ]]
     then
-        ((passes=passes+1))
+        ((passes+=1))
     else
-        ((fails=fails+1))
+        ((fails+=1))
     fi
 done
 
